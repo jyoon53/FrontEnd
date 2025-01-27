@@ -1,0 +1,152 @@
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0 20px;
+  padding: 0;
+}
+
+header h1 {
+  text-align: center;
+  margin: 20px 0 10px;
+  font-size: 1.75em;
+}
+
+.categories-title {
+  display: none;
+  font-family: "Verdana", sans-serif;
+  font-size: 1rem;
+  margin: 20px 0 10px 30px;
+  text-align: left;
+}
+
+.row {
+  width: 100%;
+  overflow: hidden;
+}
+
+.sm-title {
+  display: none;
+  width: 100%;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* Menu Item Container */
+.menu-item {
+  position: relative;
+  background-color: grey;
+  border: 1px solid black;
+  padding: 30px 20px 0;
+  text-align: left;
+  margin: 20px;
+  float: left;
+  height: 140px;
+  overflow: hidden;
+  cursor: default;
+  transition: box-shadow 0.2s ease;
+}
+
+.menu-item:hover {
+  cursor: ns-resize;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+.menu-item::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+.menu-item:hover::-webkit-scrollbar {
+  background-color: #f0f0f0;
+}
+
+.menu-item::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+}
+
+/* Menu Title */
+.menu-item .title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140px;
+  height: 30px;
+  background-color: #d9534f;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25em;
+  border: 1px solid black;
+}
+
+/* Unique Title Colors */
+#chicken .title,
+#chicken .sm-title {
+  background-color: #f7b733;
+}
+
+#beef .title,
+#beef .sm-title {
+  background-color: #d9534f;
+  color: white;
+}
+
+#sushi .title,
+#sushi .sm-title {
+  background-color: #5bc0de;
+}
+
+/* Responsive Styles */
+@media (min-width: 992px) {
+  .lg {
+    width: calc(33.333% - 30px);
+    margin: 15px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .md {
+    width: calc(50% - 30px);
+    margin: 15px;
+  }
+
+  .md-2 {
+    width: calc(100% - 30px);
+    clear: both;
+    margin: 15px auto;
+    float: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .sm {
+    width: calc(100% - 60px);
+    margin: 20px auto;
+    float: none;
+  }
+
+  .menu-title {
+    display: none;
+  }
+
+  .categories-title {
+    display: block;
+  }
+
+  .menu-item .title {
+    display: none;
+  }
+
+  .sm-title {
+    display: block;
+  }
+}
