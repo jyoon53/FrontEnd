@@ -1,0 +1,101 @@
+/* Remove default margin so the navbar sits flush at the top */
+body {
+  margin: 0;
+}
+
+/* -------------------------------
+     Navbar Styles (Lighter Grey)
+     ------------------------------- */
+.navbar-default {
+  background-color: #ccc; /* Lighter grey background */
+  border-color: #ccc;
+  min-height: 40px;
+}
+
+.navbar-default .navbar-brand {
+  font-size: 30px; /* Larger font for the navbar title */
+  color: #000; /* Dark text for contrast */
+}
+
+.navbar-default .navbar-toggle {
+  border-color: #000;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #000;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #000;
+}
+
+/* -------------------------------
+     Mobile (xs) Styles
+     ------------------------------- */
+@media (max-width: 767px) {
+  /* Mobile dropdown menu spans full width */
+  #mobile-menu {
+    background-color: #ccc;
+    margin: 0 -15px;
+    padding: 0;
+  }
+  /* Style mobile dropdown menu items */
+  #mobile-menu .nav > li {
+    text-align: center;
+    border-bottom: 1px solid #999;
+  }
+  #mobile-menu .nav > li:last-child {
+    border-bottom: none;
+  }
+  #mobile-menu .nav > li > a {
+    display: block;
+    padding: 15px;
+  }
+  /* Increase container side padding on mobile */
+  .container-fluid {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+}
+
+/* -------------------------------
+     Tablet & Desktop Styles
+     ------------------------------- */
+@media (min-width: 768px) {
+  #mobile-menu {
+    display: none !important;
+  }
+  /* Reduce container side padding for wider screens */
+  .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+/* -------------------------------
+     Page Heading Styling
+     ------------------------------- */
+.page-heading {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* -------------------------------
+     Section Styling
+     ------------------------------- */
+.section {
+  background-color: #eee; /* Light background to distinguish sections */
+  padding: 20px;
+  margin-bottom: 20px; /* Vertical spacing between sections */
+  min-height: 700px; /* Fixed height for each section */
+  height: auto;
+}
+
+/* -------------------------------
+     Optional Text Center Styling within a section
+     ------------------------------- */
+.section .text-center {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
