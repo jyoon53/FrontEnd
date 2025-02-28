@@ -1,29 +1,58 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" ng-app="LunchCheck">
   <head>
+    <meta charset="utf-8" />
     <title>Lunch Checker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Import Bootstrap for styling -->
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
     <style>
-      .message { font-size: 1.3em; font-weight: bold; }
+      .message {
+        font-size: 1.3em;
+        font-weight: bold;
+      }
+      .green {
+        color: green;
+        border: 1px solid green;
+      }
+      .red {
+        color: red;
+        border: 1px solid red;
+      }
     </style>
   </head>
-<body>
-   <div class="container">
-     <h1>Lunch Checker</h1>
+  <body>
+    <!-- Declare a controller for the section that contains our elements -->
+    <div class="container" ng-controller="LunchCheckController">
+      <h1>Lunch Checker</h1>
 
-         <div class="form-group">
-             <input id="lunch-menu" type="text"
-             placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control">
-         </div>
-         <div class="form-group">
-             <button class="btn btn-default">Check If Too Much</button>
-         </div>
-         <div class="form-group message">
-           <!-- Your message can go here. -->
-         </div>
-   </div>
+      <!-- Textbox: ng-model binds user input to 'lunchItems'
+           Note: We do NOT count empty items (e.g., ",,") as valid entries -->
+      <div class="form-group">
+        <input
+          id="lunch-menu"
+          type="text"
+          class="form-control"
+          placeholder="List comma separated dishes you usually have for lunch"
+          ng-model="lunchItems"
+        />
+      </div>
 
-</body>
+      <!-- Button: Calls the checkLunch() function when clicked -->
+      <div class="form-group">
+        <button class="btn btn-default" ng-click="checkLunch()">
+          Check If Too Much
+        </button>
+      </div>
+
+      <!-- Message Placeholder: Displays the result message and applies CSS class based on status -->
+      <div class="form-group message" ng-if="message" ng-class="messageClass">
+        {{ message }}
+      </div>
+    </div>
+
+    <!-- Import AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
