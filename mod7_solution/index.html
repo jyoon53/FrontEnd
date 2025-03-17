@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ShoppingListCheckOff">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Import Bootstrap for styling -->
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <style>
+      .message {
+        font-size: 1.3em;
+        font-weight: bold;
+      }
+      /* Small textbox for quantity */
+      .quantity-input {
+        width: 50px;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <!-- To Buy List using ToBuyController -->
+        <div class="col-md-6" ng-controller="ToBuyController as toBuy">
+          <h2>To Buy</h2>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="item in toBuy.items">
+              <!-- Display an input bound to item.quantity and the item name -->
+              Buy
+              <input
+                type="number"
+                class="quantity-input"
+                ng-model="item.quantity"
+              />
+              {{ item.name }}
+              <button
+                class="btn btn-primary btn-xs pull-right"
+                ng-click="toBuy.buyItem($index)"
+              >
+                Buy
+              </button>
+            </li>
+          </ul>
+          <!-- Display when all items are bought -->
+          <p class="message" ng-if="toBuy.items.length === 0">
+            Everything is bought!
+          </p>
+        </div>
+
+        <!-- Already Bought List using AlreadyBoughtController -->
+        <div class="col-md-6" ng-controller="AlreadyBoughtController as bought">
+          <h2>Already Bought</h2>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="item in bought.items">
+              <!-- Total price is calculated on the fly and formatted with the custom filter -->
+              Bought {{ item.quantity }} {{ item.name }} for total price of {{
+              (item.quantity * item.pricePerItem) | tripleDollarFilter }}
+            </li>
+          </ul>
+          <!-- Display when no items have been bought yet -->
+          <p class="message" ng-if="bought.items.length === 0">
+            Nothing bought yet.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Import AngularJS right before the closing body tag -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <!-- Include your AngularJS application code -->
+    <script src="app.js"></script>
+  </body>
+</html>
