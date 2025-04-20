@@ -35,7 +35,11 @@
         ".json";
 
       return $http.get(url).then(function (resp) {
-        return resp.data ? resp.data : $q.reject(false);
+        if (resp.data) {
+          /* remember which folder the image lives in (L, A, SP, …) */
+          resp.data.categoryShortName = category; // ← NEW
+          return resp.data;
+        }
       });
     };
   }

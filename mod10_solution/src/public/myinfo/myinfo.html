@@ -1,12 +1,11 @@
 <!-- Show prompt if the user never signed up -->
 <div ng-if="!infoCtrl.user" class="text-center">
   <h3>Not Signed Up Yet.</h3>
-  <a ui-sref="public.signup">Sign up Now!</a>
+  <a ui-sref="public.signup">Sign up&nbsp;Now!</a>
 </div>
 
 <!-- Show profile once the user is saved -->
 <div ng-if="infoCtrl.user" class="my-info">
-  <!-- NEW class -->
   <h2>My&nbsp;Info</h2>
   <ul class="list-group">
     <li class="list-group-item">
@@ -18,17 +17,18 @@
     <!-- Favourite dish -->
     <li class="list-group-item">
       <b>Favorite dish:</b>
-      {{ infoCtrl.user.fav }} – {{ infoCtrl.user.item.name }}<br />
+      {{ infoCtrl.user.fav }}&nbsp;–&nbsp;{{ infoCtrl.user.item.name }}<br />
 
-      <!-- removed |lowercase so L3 → L3.jpg (correct) -->
+      <!-- Use the same local path and lower‑case file names as the menu view -->
       <img
         class="img-thumbnail"
         style="max-width: 200px"
-        ng-src="https://coursera-jhu.s3.amazonaws.com/menu/{{ infoCtrl.user.item.short_name }}.jpg"
+        ng-src="images/menu/{{ infoCtrl.user.item.categoryShortName }}/{{ infoCtrl.user.item.short_name }}.jpg"
         alt="{{ infoCtrl.user.item.name }}"
+        onerror="this.style.display='none';"
       />
 
-      <p>{{ infoCtrl.user.item.description }}</p>
+      <p style="margin-top: 8px">{{ infoCtrl.user.item.description }}</p>
     </li>
   </ul>
 </div>
