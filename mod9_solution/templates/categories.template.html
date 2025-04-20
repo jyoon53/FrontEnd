@@ -1,0 +1,11 @@
+<h2>Menu Categories</h2>
+
+<div class="card" ng-repeat="cat in $ctrl.categories">
+  <strong>{{ cat.name }}</strong>
+  <br />
+  <a ui-sref="items({ shortName: cat.short_name })">
+    See {{ cat.short_name }} items →
+  </a>
+</div>
+
+<p class="back"><a ui-sref="home">← Home</a></p>

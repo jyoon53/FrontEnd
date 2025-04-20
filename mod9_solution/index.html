@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MenuApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>Restaurant Menu</title>
+
+    <!-- Frameworks – keep order: Angular → ui‑router -->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+
+    <!-- App artifacts -->
+    <script src="js/menuapp.module.js"></script>
+    <script src="js/data.module.js"></script>
+    <script src="js/menudata.service.js"></script>
+    <script src="js/categories.component.js"></script>
+    <script src="js/items.component.js"></script>
+    <script src="js/routes.js"></script>
+
+    <!-- Tiny readability styles (not graded) -->
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        margin: 2rem;
+      }
+      h2 {
+        margin-top: 0;
+      }
+      .card {
+        border: 1px solid #ddd;
+        padding: 1rem;
+        margin: 0.75rem 0;
+        border-radius: 4px;
+      }
+      a {
+        color: #1976d2;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .back {
+        margin-top: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ui‑view outlet -->
+    <div ui-view></div>
+  </body>
+</html>
