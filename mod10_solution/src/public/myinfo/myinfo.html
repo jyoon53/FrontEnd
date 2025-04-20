@@ -1,0 +1,34 @@
+<!-- Show prompt if the user never signed up -->
+<div ng-if="!infoCtrl.user" class="text-center">
+  <h3>Not Signed Up Yet.</h3>
+  <a ui-sref="public.signup">Sign up Now!</a>
+</div>
+
+<!-- Show profile once the user is saved -->
+<div ng-if="infoCtrl.user" class="my-info">
+  <!-- NEW class -->
+  <h2>My&nbsp;Info</h2>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <b>Name:</b> {{ infoCtrl.user.first }} {{ infoCtrl.user.last }}
+    </li>
+    <li class="list-group-item"><b>Email:</b> {{ infoCtrl.user.email }}</li>
+    <li class="list-group-item"><b>Phone:</b> {{ infoCtrl.user.phone }}</li>
+
+    <!-- Favourite dish -->
+    <li class="list-group-item">
+      <b>Favorite dish:</b>
+      {{ infoCtrl.user.fav }} – {{ infoCtrl.user.item.name }}<br />
+
+      <!-- removed |lowercase so L3 → L3.jpg (correct) -->
+      <img
+        class="img-thumbnail"
+        style="max-width: 200px"
+        ng-src="https://coursera-jhu.s3.amazonaws.com/menu/{{ infoCtrl.user.item.short_name }}.jpg"
+        alt="{{ infoCtrl.user.item.name }}"
+      />
+
+      <p>{{ infoCtrl.user.item.description }}</p>
+    </li>
+  </ul>
+</div>

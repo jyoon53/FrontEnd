@@ -1,0 +1,32 @@
+.loading-indicator {
+  display: block;
+  width: 70px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 40%;
+  z-index: 100;
+  background-color: #fff;
+}
+
+.loading-indicator img {
+  width: 70px;
+  background-color: #fff;
+}
+
+.ui-view-placeholder {
+  margin-top: 60px;
+}
+
+/* ---------- My‑Info readability ---------- */
+.my-info .list-group-item {
+  background-color: #ffffff; /* pure white like Bootstrap default   */
+  color: #333333; /* dark grey text for contrast         */
+  border-color: #dddddd; /* subtle divider lines                */
+}
+
+.my-info img {
+  display: block;
+  margin-top: 8px;
+}

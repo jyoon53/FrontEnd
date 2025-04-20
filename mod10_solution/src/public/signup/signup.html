@@ -1,0 +1,122 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2 class="text-center">Newsletter Sign‑Up</h2>
+
+    <!--
+      ①  NO action attribute
+      ②  ng-submit handles both a click on the button and pressing Enter
+      ③  novalidate = we rely on Angular validation only
+    -->
+    <form name="suForm" ng-submit="suCtrl.submit(suForm)" novalidate>
+      <!-- First -->
+      <div
+        class="form-group"
+        ng-class="{'has-error': suForm.first.$touched && suForm.first.$invalid}"
+      >
+        <label>First Name *</label>
+        <input
+          class="form-control"
+          name="first"
+          ng-model="suCtrl.user.first"
+          required
+        />
+        <div
+          class="help-block"
+          ng-if="suForm.first.$touched && suForm.first.$error.required"
+        >
+          First name is required
+        </div>
+      </div>
+
+      <!-- Last -->
+      <div
+        class="form-group"
+        ng-class="{'has-error': suForm.last.$touched && suForm.last.$invalid}"
+      >
+        <label>Last Name *</label>
+        <input
+          class="form-control"
+          name="last"
+          ng-model="suCtrl.user.last"
+          required
+        />
+        <div
+          class="help-block"
+          ng-if="suForm.last.$touched && suForm.last.$error.required"
+        >
+          Last name is required
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div
+        class="form-group"
+        ng-class="{'has-error': suForm.email.$touched && suForm.email.$invalid}"
+      >
+        <label>Email *</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          ng-model="suCtrl.user.email"
+          required
+        />
+        <div
+          class="help-block"
+          ng-messages="suForm.email.$error"
+          ng-if="suForm.email.$touched"
+        >
+          <div ng-message="required">Email required</div>
+          <div ng-message="email">Invalid email</div>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div
+        class="form-group"
+        ng-class="{'has-error': suForm.phone.$touched && suForm.phone.$invalid}"
+      >
+        <label>Phone (###‑###‑####) *</label>
+        <input
+          type="tel"
+          class="form-control"
+          name="phone"
+          ng-model="suCtrl.user.phone"
+          ng-pattern="/^\d{3}-\d{3}-\d{4}$/"
+          required
+        />
+        <div class="help-block" ng-if="suForm.phone.$touched">
+          <span ng-show="suForm.phone.$error.required">Phone required</span>
+          <span ng-show="suForm.phone.$error.pattern">Format ###‑###‑####</span>
+        </div>
+      </div>
+
+      <!-- Favourite -->
+      <div class="form-group" ng-class="{'has-error': suCtrl.favoriteError}">
+        <label>Favorite Menu # (e.g. L1) *</label>
+        <input
+          class="form-control"
+          name="fav"
+          ng-model="suCtrl.user.fav"
+          ng-blur="suCtrl.blurFav()"
+          required
+        />
+        <div class="help-block">{{ suCtrl.favoriteError }}</div>
+      </div>
+
+      <!--
+        ④  *Real* submit button (type=submit) — Angular intercepts it,
+            prevents default, and runs suCtrl.submit()
+      -->
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+    <div
+      class="alert alert-success"
+      ng-if="suCtrl.saved"
+      style="margin-top: 1em"
+    >
+      Your information has been saved.
+    </div>
+  </div>
+</div>
